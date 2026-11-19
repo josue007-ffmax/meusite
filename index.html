@@ -1,0 +1,703 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>2° MTEC | Nossa Turma</title>
+
+    <meta name="description" content="Site oficial da turma do 2° MTEC">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #080b14;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 11, 20, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 70px;
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #a78bfa;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            padding: 100px 20px 60px;
+
+            background:
+                linear-gradient(
+                    rgba(8,11,20,0.65),
+                    rgba(8,11,20,0.95)
+                ),
+                url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 50px;
+            background: rgba(139,92,246,0.15);
+            border: 1px solid rgba(139,92,246,0.4);
+            color: #c4b5fd;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(90deg, #7c3aed, #db2777);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139,92,246,0.3);
+        }
+
+        .btn-secondary {
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           SOBRE
+        ========================= */
+
+        .about {
+            background: #0b0f1a;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #aeb8c8;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+            background: #101522;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(139,92,246,0.5);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           GALERIA
+        ========================= */
+
+        .gallery {
+            background: #0b0f1a;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           FRASE
+        ========================= */
+
+        .quote {
+            text-align: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    #4c1d95,
+                    #831843
+                );
+        }
+
+        .quote blockquote {
+            max-width: 800px;
+            margin: auto;
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 700;
+        }
+
+        .quote p {
+            margin-top: 20px;
+            color: #ddd6fe;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 20px;
+            text-align: center;
+            background: #05070d;
+            color: #64748b;
+        }
+
+        footer strong {
+            color: #a78bfa;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3.3rem;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header>
+        <nav>
+            <div class="logo">
+                2° <span>MTEC</span>
+            </div>
+
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#momentos">Momentos</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🎓 Turma 2026
+            </div>
+
+            <h1>
+                2° <span>MTEC</span>
+            </h1>
+
+            <p>
+                Um lugar para guardar nossas histórias,
+                momentos, amizades e tudo aquilo que
+                torna nossa turma inesquecível.
+            </p>
+
+            <div class="buttons">
+                <a href="#sobre" class="btn btn-primary">
+                    Conheça a turma
+                </a>
+
+                <a href="#galeria" class="btn btn-secondary">
+                    Ver galeria
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOBRE
+    ========================= -->
+
+    <section class="about" id="sobre">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Sobre nossa turma</h2>
+                <p>Mais do que uma sala, uma história.</p>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80"
+                        alt="Grupo de amigos"
+                    >
+
+                </div>
+
+                <div class="about-text">
+
+                    <h3>Uma turma, muitos momentos.</h3>
+
+                    <p>
+                        O 2° MTEC é formado por pessoas diferentes,
+                        com sonhos diferentes, mas que compartilham
+                        uma mesma caminhada.
+                    </p>
+
+                    <p>
+                        Entre trabalhos, provas, apresentações,
+                        risadas e momentos inesperados, construímos
+                        memórias que vão muito além da sala de aula.
+                    </p>
+
+                    <p>
+                        Este site é um pequeno registro dessa história.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MOMENTOS
+    ========================= -->
+
+    <section id="momentos">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Nossa jornada</h2>
+
+                <p>
+                    Alguns dos momentos que fazem parte
+                    da nossa história.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">📚</div>
+
+                    <h3>Aprendizado</h3>
+
+                    <p>
+                        Dias de estudos, trabalhos e desafios
+                        que ajudaram todos nós a crescer.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">😂</div>
+
+                    <h3>Amizades</h3>
+
+                    <p>
+                        Muitas conversas, brincadeiras e
+                        momentos que provavelmente nunca
+                        vamos esquecer.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">🚀</div>
+
+                    <h3>Futuro</h3>
+
+                    <p>
+                        Cada um seguindo seu caminho,
+                        levando consigo tudo o que aprendeu
+                        durante essa jornada.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERIA
+    ========================= -->
+
+    <section class="gallery" id="galeria">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Galeria</h2>
+
+                <p>
+                    Alguns registros dos nossos momentos.
+                </p>
+
+            </div>
+
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80"
+                        alt="Universidade"
+                    >
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80"
+                        alt="Amigos"
+                    >
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+                        alt="Grupo"
+                    >
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80"
+                        alt="Estudantes"
+                    >
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80"
+                        alt="Estudos"
+                    >
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80"
+                        alt="Amigos conversando"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FRASE
+    ========================= -->
+
+    <section class="quote">
+
+        <blockquote>
+            "O que torna uma turma especial
+            não são apenas as aulas,
+            mas as pessoas e os momentos
+            que ficam para sempre."
+        </blockquote>
+
+        <p>
+            — 2° MTEC
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            Feito com ❤️ pela turma do
+            <strong>2° MTEC</strong>
+        </p>
+
+        <p>
+            © 2026 — Todos os momentos reservados.
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
